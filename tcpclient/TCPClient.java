@@ -19,14 +19,13 @@ public class TCPClient {
       Socket socket = new Socket(hostname, port);
       InputStream os = socket.getInputStream();
 
-      byte[] encodedBytes = new byte[51];
+      byte[] encodedBytes = new byte[1];
 
       // int i = 0;
       //
       // Integer currentByte = os.read();
       //
       // while(currentByte != -1) {
-      //   // TODO: allocation does not work. move inside loop.
       //   encodedBytes[i++] = currentByte.byteValue();
       //
       //   System.out.println(new String(encodedBytes, StandardCharsets.UTF_8) + i);
@@ -34,10 +33,13 @@ public class TCPClient {
       //   // i++;
       // }
 
-      int returnedBytes = os.read(encodedBytes);
+      // int returnedBytes = os.read(encodedBytes);
+
+      Integer grej = os.read();
+      encodedBytes[0] = grej.byteValue();
 
       String decodedString = new String(encodedBytes, StandardCharsets.UTF_8);
-
+      System.out.println(encodedBytes[0]);
 
       return decodedString + "\n";
 
