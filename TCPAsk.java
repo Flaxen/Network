@@ -30,8 +30,7 @@ import tcpclient.TCPClient;
             return;
         }
         try {
-            // String serverOutput = TCPClient.askServer(hostname, port, serverInput);
-            String serverOutput = TCPClient.askServer(hostname, port);
+            String serverOutput = TCPClient.askServer(hostname, port, serverInput);
 
             System.out.printf("%s:%d says:\n%s", hostname, port, serverOutput);
         } catch(IOException ex) {
