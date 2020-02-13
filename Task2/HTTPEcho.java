@@ -13,34 +13,22 @@ public class HTTPEcho {
 
 
         while(true) {
+          System.out.println("Awaiting Client");
           Socket socket = server.accept();
+          System.out.println("Client accepted");
 
-          InputStream in = socket.getInputStream();
-
+          BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
           String outputString = "";
-          Integer lastByte = in.read();
-          byte[] lastBytes = new byte[1];
-          boolean lastCharNewLine = false;
-          while(lastByte != -1) {
-            if (new String(lastBytes, StandardCharsets.UTF_8).equals("\n")) {
-              if(lastCharNewLine) {
-                break;
-                System.out.println("double newLine\nbreaking");
+          String lastLine = in.readLine();
 
-              }
-              lastCharNewLine = true;
-              System.out.println("lastCharNewLine set to true");
-
-            } else {
-              lastCharNewLine = false;
-              System.out.println("lastCharNewLine set to false");
+          while(lastLine != null) {
+            System.out.println("LastLine: " + lastLine);
+            if(lastLine.equals("")) {
+              break;
             }
 
-            System.out.println(lastByte);
-
-            lastBytes[0] = lastByte.byteValue();
-            outputString = outputString + new String(lastBytes, StandardCharsets.UTF_8);
-            lastByte = in.read();
+            outputString = outputString + lastLine + "\n";
+            lastLine = in.readLine();
           }
 
           byte[] output = outputString.getBytes(StandardCharsets.UTF_8);
