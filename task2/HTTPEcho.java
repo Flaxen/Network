@@ -27,9 +27,11 @@ public class HTTPEcho {
               break;
             }
 
-            outputString = outputString + lastLine + "\n";
+            outputString = outputString + lastLine + "\r\n";
             lastLine = in.readLine();
           }
+
+          outputString = "HTTP/1.1 200 OK\r\n\r\n" + outputString;
 
           byte[] output = outputString.getBytes(StandardCharsets.UTF_8);
 
