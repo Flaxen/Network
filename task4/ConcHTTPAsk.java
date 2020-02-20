@@ -50,7 +50,7 @@ public class ConcHTTPAsk {
 
 
       for(int i = 0; i < parameters.length; i++) {
-        System.out.println(parameters[i] + "end");
+        System.out.println(parameters[i]);
       }
 
       return parameters;
@@ -136,29 +136,3 @@ public class ConcHTTPAsk {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
