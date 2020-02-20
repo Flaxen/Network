@@ -86,21 +86,15 @@ public class HTTPAsk {
             } else if(parameters.length == 2) {
               outputString = outputString + TCPClient.askServer(parameters[0], Integer.parseInt(parameters[1]));
             } else if(parameters.length == 3) {
-              // System.out.println("here!");
-              System.out.println("Extra print");
-              for(int i = 0; i < parameters.length; i++) {
-                System.out.println(parameters[i]);
-              }
 
               outputString = outputString + TCPClient.askServer(parameters[0], Integer.parseInt(parameters[1]), parameters[2]);
-              // System.out.println(outputString);
 
             } else {
               System.out.println("Error: parameter len not 2 or 3");
             }
 
           } catch(SocketTimeoutException ex) {
-            outputString = "504 Gateway Timeout\r\n\r\n";
+            outputString = "408 Request Timeout\r\n\r\n";
           } catch(UnknownHostException ex) {
             outputString = "404 Not Found\r\n\r\n";
           }
