@@ -11,7 +11,7 @@ public class HTTPAsk {
       String[] errorString = new String[1];
 
       if (!inputString.startsWith("GET /ask?hostname=") || !inputString.contains("&port=")) {
-        errorString[0] = "400 Bad Request\r\n\r\n";
+        errorString[0] = "HTTP/1.1 400 Bad Request\r\n\r\n";
         return errorString;
       }
 
@@ -32,7 +32,7 @@ public class HTTPAsk {
       if(parameters.length == 3) {
 
         if(!parameters[2].startsWith("string=")){
-          errorString[0] = "400 Bad Request\r\n\r\n";
+          errorString[0] = "HTTP/1.1 400 Bad Request\r\n\r\n";
           return errorString;
         }
         parameters[2] = parameters[2].replace("string=", "");
@@ -40,7 +40,7 @@ public class HTTPAsk {
       }
 
       if(parameters.length > 3) {
-        errorString[0] = "400 Bad Request\r\n\r\n";
+        errorString[0] = "HTTP/1.1 400 Bad Request\r\n\r\n";
         return errorString;
       }
 
@@ -94,9 +94,9 @@ public class HTTPAsk {
             }
 
           } catch(SocketTimeoutException ex) {
-            outputString = "408 Request Timeout\r\n\r\n";
+            outputString = "HTTP/1.1 408 Request Timeout\r\n\r\n";
           } catch(UnknownHostException ex) {
-            outputString = "404 Not Found\r\n\r\n";
+            outputString = "HTTP/1.1 404 Not Found\r\n\r\n";
           }
 
 

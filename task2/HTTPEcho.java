@@ -31,11 +31,23 @@ public class HTTPEcho {
             lastLine = in.readLine();
           }
 
+          System.out.println("I got here!");
+
           outputString = "HTTP/1.1 200 OK\r\n\r\n" + outputString;
 
           byte[] output = outputString.getBytes(StandardCharsets.UTF_8);
 
           OutputStream out = socket.getOutputStream();
+
+          int tal = 9999;
+          for(int i = 0; i < tal+1; i++) {
+            System.out.print("Total Progress: " + i +"/"+tal + " " + i*100/tal + "%\r");
+          }
+          System.out.print("\n");
+
+          System.out.print("POST LOOP, PRE PRINT");
+
+
           out.write(output);
 
           socket.close();

@@ -6,9 +6,9 @@ import tcpclient.TCPClient;
 public class ConcHTTPAsk {
 
   static String HTTP200 = "HTTP/1.1 200 OK\r\n\r\n";
-  static String HTTP400 = "HTTP/1.1 400 Bad Request\r\n";
-  static String HTTP404 = "HTTP/1.1 404 Not Found\r\n";
-  static String HTTP408 = "HTTP/1.1 408 Request Timeout\r\n";
+  static String HTTP400 = "HTTP/1.1 400 Bad Request\r\n\r\n";
+  static String HTTP404 = "HTTP/1.1 404 Not Found\r\n\r\n";
+  static String HTTP408 = "HTTP/1.1 408 Request Timeout\r\n\r\n";
 
     static String[] processString(String inputString) {
       String[] parameters = new String[2];
