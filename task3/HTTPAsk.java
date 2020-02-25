@@ -10,7 +10,7 @@ public class HTTPAsk {
       String[] parameters = new String[2];
       String[] errorString = new String[1];
 
-      if (!inputString.startsWith("GET /ask?hostname=") || !inputString.contains("&port=")) {
+      if (!inputString.startsWith("GET /ask?hostname=") || !inputString.contains("&port=") || !inputString.endsWith(" HTTP/1.1")) {
         errorString[0] = "HTTP/1.1 400 Bad Request\r\n\r\n";
         return errorString;
       }
